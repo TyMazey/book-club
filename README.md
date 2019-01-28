@@ -1,5 +1,7 @@
 # README
 
+https://obscure-shore-40694.herokuapp.com/ | https://git.heroku.com/obscure-shore-40694.git
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
