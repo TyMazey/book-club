@@ -6,7 +6,7 @@ RSpec.describe 'as a visitor', type: :feature do
 
     visit '/'
 
-    expect(page).to have_button('Home')
+    expect(page).to have_link('Home')
 
     click_on('Home')
 
@@ -17,7 +17,7 @@ RSpec.describe 'as a visitor', type: :feature do
 
     visit '/'
 
-    expect(page).to have_button('Shelf')
+    expect(page).to have_link('Shelf')
 
     click_on('Shelf')
 
