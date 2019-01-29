@@ -1,0 +1,14 @@
+<section class= "user"
+<h1><%= @user.name %></h1>
+
+</section>
+<section class="reviews">
+<%= @reviews.each do |review| %>
+  <p><%= review.title %></p>
+  <p><%= review.rating %></p>
+  <p><%= review.description %></p>
+  <p><%= review.book.title%></p>
+  <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
+  <p><%= review.created_at %></p>
+<% end %>
+</section>
