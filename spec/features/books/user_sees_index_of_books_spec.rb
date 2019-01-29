@@ -36,7 +36,9 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     visit books_path
 
-    click_on "Mody Dick"
+    # save_and_open_page
+
+    click_link("Moby Dick", :text => "Moby Dick")
 
     expect(current_path).to eq "/books/#{book_1.id}"
   end
