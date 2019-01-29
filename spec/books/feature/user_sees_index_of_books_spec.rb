@@ -17,11 +17,11 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     visit '/books'
 
-    within "book-#{book_1.title}" do
+    within "#book-#{book_1.name_as_kebab}" do
       expect(page).to have_content(book_1.title)
       expect(page).to have_content(book_1.pages)
       expect(page).to have_content(book_1.year_published)
-      expect(page).to have_content(book_1.thumbnail)
+      expect(page).to have_xpath("//img[@src='gibberish']")
     end
   end
 end
