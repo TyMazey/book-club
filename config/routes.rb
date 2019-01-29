@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get '/', to:'landingpage#index'
 
   get '/books', to:'books#index'
+
+  get '/books/:id', to:'books#show'
 end
