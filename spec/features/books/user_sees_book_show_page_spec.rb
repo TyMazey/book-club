@@ -30,4 +30,16 @@ RSpec.describe 'As a visitor', type: :feature do
     expect(page).to have_xpath("//img[@src='gibbergabber']")
   end
 
+  it 'shows statistics in the show page' do
+    author = Author.create(name: "steve jobs")
+    book = author.books.create(title: "Story about me", pages: 300, year_published: 300, thumbnail: "gibbergabber")
+
+    visit book_path(book)
+    within '.statistics' do
+      expect(page).to have_content(top_reviews)
+      expect(page).to have_content(bottom_reviews)
+      expect(page).to have_content("Overall Rating: 4.0")
+    end
+  end
+
 end
