@@ -121,10 +121,15 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#best-books' do
-      expect(page).to have_content('Booky books: 5.0 out of 5')
-      expect(page).to have_content('Abby reads: 4.0 out of 5')
-      expect(page).to have_content('Fancy Books: 4.0 out of 5')
-      expect(page).to_not have_content('Not this one: 1.0 out of 5')
+      click_on('Booky books:')
+      expect(current_path).to eq(book_path(book_1.id))
+    end
+
+    visit(books_path)
+
+    within '#best-books' do
+      click_on('Abby reads:')
+      expect(current_path).to eq(book_path(book_2.id))
     end
   end
 
@@ -142,10 +147,15 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#worst-books' do
-      expect(page).to have_content('Abby reads: 2.0 out of 5')
-      expect(page).to have_content('Not this one: 1.0 out of 5')
-      expect(page).to have_content('Fancy Books: 2.0 out of 5')
-      expect(page).to_not have_content('Booky books: 5.0 out of 5')
+      click_on('Abby reads:')
+      expect(current_path).to eq(book_path(book_2))
+    end
+
+    visit books_path
+
+    within '#worst-books' do
+      click_on('Not this one:')
+      expect(current_path).to eq(book_path(book_4))
     end
   end
 
@@ -166,9 +176,14 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#user-reviews' do
-      expect(page).to have_content('Bob: 3')
-      expect(page).to have_content('Steve: 2')
-      expect(page).to have_content('Mac: 1')
+      click_on('Bob:')
+      expect(current_path).to eq(user_path(user_1))
+    end
+
+    visit books_path
+    within '#user-reviews' do
+      click_on('Steve:')
+      expect(current_path).to eq(user_path(user_2))
     end
   end
 
