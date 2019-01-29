@@ -30,6 +30,5 @@ RSpec.describe 'As a visitor', type: :feature do
     click_link("about me", :text => "about me")
 
     expect(current_path).to eq "/books/#{book.id}"
-
   end
 end
