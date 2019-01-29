@@ -27,5 +27,35 @@ RSpec.describe Book, type: :model do
         expect(book_1.remove_author(author)).to eq([author_2])
       end
     end
+
+    describe '.average_rating' do
+      it 'can return the average rating for a book' do
+        author = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+        user_1 = User.create(name: "bob")
+        user_2 = User.create(name: "rob")
+        user_3 = User.create(name: "tod")
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
+
+        expect(book_1.average_rating).to eq(3)
+      end
+    end
+
+    describe '.total_reviews' do
+      it 'can return the total number of reviews for a book' do
+        author = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+        user_1 = User.create(name: "bob")
+        user_2 = User.create(name: "rob")
+        user_3 = User.create(name: "tod")
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
+
+        expect(book_1.total_reviews).to eq(3)
+      end
+    end
   end
 end
