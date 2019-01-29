@@ -9,10 +9,10 @@ RSpec.describe Review, type: :model do
   end
 
   describe 'validations' do
-    it {should validates_presence_of :title}
-    it {should validates_presence_of :description}
-    it {should validates_presence_of :rating}
-    it {should validates_presence_of :user}
+    it {should validate_presence_of :title}
+    it {should validate_presence_of :description}
+    it {should validate_presence_of :rating}
+    it {should validate_presence_of :user_id}
   end
 
   describe 'class methods' do
