@@ -59,7 +59,7 @@ RSpec.describe 'As a visitor', type: :feature do
     end
   end
 
-  it 'had a delete button to remove the shown book' do
+  it 'has a delete button to remove the shown book' do
     author = Author.create(name: "steve jobs")
     user_1 = User.create(name: "bob")
     book_1 = author.books.create(title: "Story about me", pages: 300, year_published: 300, thumbnail: "gibbergabber")
@@ -76,7 +76,10 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content(book_1.title)
       click_button('Delete Book')
     end
-    
+
     expect(current_path).to eq(books_path)
+    expect(page).to have_content("Huzzah")
+    expect(page).to_not have_content("Story about me")
+
   end
 end

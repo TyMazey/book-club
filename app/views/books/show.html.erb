@@ -2,7 +2,7 @@
   <div class="book-image">
     <img src="<%= @book.thumbnail %>" alt="book-<%= @book.id %>">
   </div>
-  <div class="book-info">
+  <div class="book-info" id="primary-info">
     <h1 id="book-title"><%= @book.title %></h1>
     <% @book.authors.each do |author| %>
     <p>Author(s): </p><%= link_to author.name, author_path(author.id), class: 'navlink', id:'book-author' %>
@@ -10,6 +10,7 @@
     <p>Page Count: <%= @book.pages %> </p>
     <p>Publication Date: <%= @book.year_published %></p>
     <%= link_to 'New Review', new_book_review_path(@book.id), class: 'navlink'%>
+    <%= button_to "Delete Book", book_path(@book), method: :delete %>
   </div>
 </section>
 <% @book.reviews.each do |review| %>
