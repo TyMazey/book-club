@@ -59,15 +59,16 @@ RSpec.describe 'as a visitor', type: :feature do
 
       visit user_path(user.id)
 
+
       within "#book-#{book_2.id}" do
 
+        expect(page).to have_content('better')
+        expect(page).to have_content('yay')
         click_button('Delete Review')
-
-        expect(page).to_not have_content('better')
-        expect(page).to_not have_content('yay')
       end
-      expect(page).to have_content('good')
       expect(current_path).to eq(user_path(user.id))
+      expect(page).to have_content('good')
+      expect(page).to_not have_content('better')
 
     end
   end

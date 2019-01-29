@@ -15,6 +15,7 @@ class Review < ApplicationRecord
   end
 
   def delete_review(id)
+    binding.pry
     Review.destroy(id)
   end
 end
