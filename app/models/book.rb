@@ -20,7 +20,11 @@ class Book < ApplicationRecord
   end
 
   def top_reviews
-    reviews.order(rating: :desc).limit(3)
+    reviews.order(rating: :desc, title: :desc).limit(3)
+  end
+
+  def bottom_reviews
+    reviews.order(rating: :asc, title: :desc).limit(3)
   end
 
 
