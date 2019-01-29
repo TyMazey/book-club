@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'As a vistitor' do
+RSpec.describe 'As a vistitor', type: :feature do
 
   it 'shows all books' do
     book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish")
