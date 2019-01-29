@@ -40,7 +40,7 @@ RSpec.describe Book, type: :model do
           high_three = [review_1, review_2, review_3]
 
           expect(book_1.top_reviews).to eq(high_three)
-          expect(book_1.top_reviews).to_no include(review_4)
+          expect(book_1.top_reviews).to_not include(review_4)
         end
       end
 
@@ -58,19 +58,6 @@ RSpec.describe Book, type: :model do
 
           expect(book_1.bottom_reviews).to eq(low_3)
           expect(book.bottom_reviews).to_not include(review_1)
-        end
-      end
-      describe '.overall_rating' do
-        it 'should show the overall rating of a book' do
-          author = Author.create(name: "Rickey Bobby")
-          book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
-          user_1 = User.create(name: "bob")
-          book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
-          book_1.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_1)
-          book_1.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_1)
-          book_1.reviews.create(title: "Amazing", description: "Really", rating: 2, user: user_1)
-
-          expect(book_1.overall_rating).to eq(3.75)
         end
       end
     end
