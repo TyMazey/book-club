@@ -18,7 +18,8 @@ RSpec.describe 'As a visitor', type: :feature do
   it 'shows reviews for the book' do
     author = Author.create(name: "steve jobs")
     book = author.books.create(title: "Story about me", pages: 300, year_published: 300, thumbnail: "gibbergabber")
-    review = book.reviews.create(title: "It sucked", description: "blah blah blah", rating: 5, user_id: 1)
+    user = User.create(name: "steve jobs")
+    review = book.reviews.create(title: "It sucked", description: "blah blah blah", rating: 5, user_id: user.id)
 
     visit "/books/#{book.id}"
 
@@ -26,6 +27,7 @@ RSpec.describe 'As a visitor', type: :feature do
     expect(page).to have_content(review.description)
     expect(page).to have_content(review.rating)
     expect(page).to have_content(review.user.name)
+    expect(page).to have_xpath("//img[@src='gibbergabber']")
   end
 
 end
