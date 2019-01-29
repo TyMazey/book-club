@@ -69,4 +69,26 @@ RSpec.describe 'as visitor', type: :feature do
       expect(page).to have_content('No Reviews Yet')
     end
   end
+
+  it 'deletes author and asociated books, leaving co-authors' do
+    author_1 = Author.create(name: "bob")
+    author_2 = Author.create(name:"andre")
+    book_1 = Book.create(title: "book 1", pages: 100, year_published: 1901, thumbnail: "picture url", authors: [author_1, author_2])
+    book_2 = Book.create(title: "book 2", pages: 100, year_published: 1901, thumbnail: "picture url", authors: [author_2])
+
+    visit author_path(author_1)
+
+    expect(page).to have_content('bob')
+    expect(page).to have_content('andre')
+    expect(page).to have_content('book 1')
+
+    click_button('Delete Author')
+
+    expect(current_path).to eq(books_path)
+
+    expect(page).to have_content('book 2')
+    expect(page).to have_content('andre')
+    expect(page).to_not have_content('book 1')
+    expect(page).to_not have_content('bob')
+  end
 end
