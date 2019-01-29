@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'landing_page#index'
   resources :books
   resources :authors, only: [:show]
-  resources :user, only: [:show]
+  resources :users, only: [:show]
 end
