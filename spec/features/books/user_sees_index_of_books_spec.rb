@@ -29,4 +29,15 @@ RSpec.describe 'As a vistitor', type: :feature do
       expect(page).to have_xpath("//img[@src='gibberish']")
     end
   end
+
+  it 'has link to book show page' do
+    author = Author.create(name: "Bobby Bob")
+    book_1 = author.books.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish")
+
+    visit books_path
+
+    click_on "Mody Dick"
+
+    expect(current_path).to eq "/books/#{book_1.id}"
+  end
 end
