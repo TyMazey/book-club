@@ -30,5 +30,8 @@ RSpec.describe 'As a visitor', type: :feature do
     click_link("about me", :text => "about me")
 
     expect(current_path).to eq "/books/#{book.id}"
+    expect(page).to have_content(book.title)
+    expect(page).to have_content(book.pages)
+    expect(page).to have_content(book.year_published)
   end
 end
