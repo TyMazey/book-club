@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+@media all and (min-width: 600px) {
+  .sidebar { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+  .info-display    { flex: 3 0px; }
+  .sidebar { order: 1; }
+  .info-display    { order: 2; }
+}
