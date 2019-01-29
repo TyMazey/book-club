@@ -22,6 +22,11 @@
     <% @worst_books.each do |book| %>
       <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
     <% end %>
-
+  </div>
+  <div id="user-reviews">
+    <p>Top Reviewers:</p>
+    <% @user_reviews.each do |user| %>
+      <p><%= user.name %>: <%= user.count_reviews %></p>
+      <% end %>
   </div>
 </aside>

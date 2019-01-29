@@ -123,10 +123,9 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#user-reviews' do
-    expect(page).to have_content('Bob Books reviewed: 3')
-    expect(page).to have_content('Steve Books reviewed: 2')
-    expect(page).to have_content('Mac Books reviewed: 3')
-    expect(page).to_not have_content('Jack Books reviewed: 1')
+      expect(page).to have_content('Bob: 3')
+      expect(page).to have_content('Steve: 2')
+      expect(page).to have_content('Mac: 1')
     end
   end
 end
