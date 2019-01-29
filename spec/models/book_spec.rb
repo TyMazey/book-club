@@ -74,8 +74,8 @@ RSpec.describe Book, type: :model do
       book_4.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_1)
 
       top_3 = [book_1, book_2, book_3]
-      # binding.pry
-      expect(Review.best_books).to eq(top_3)
+      
+      expect(Book.best_books).to eq(top_3)
     end
 
     it '.worst_books' do
