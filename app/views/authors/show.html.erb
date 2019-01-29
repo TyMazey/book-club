@@ -15,7 +15,7 @@
     <% end %>
     <p>Page Count: <%= book.pages %></p>
     <p>Publication Date: <%= book.year_published %></p>
-    <%= button_to "Delete Author", book_path(book), method: :delete%>
+    <%= button_to "Delete Author", author_path(@author), method: :delete%>
   </div>
     <% review = book.top_reviews(1)[0] %>
     <% if review == nil %>

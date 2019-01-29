@@ -1,20 +1,32 @@
+<section class="book_form">
 <h1>New Book</h1>
 
-<%= form_for @book do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title, placeholder: 'Title' %>
+  <%= form_for @book do |f| %>
+    <div class="form" id="title" >
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: 'Title' %>
+    </div>
 
-<%= f.label :pages %>
-<%= f.number_field :pages, placeholder: 'Page Count' %>
+    <div class="form" id="pages">
+      <%= f.label :pages %>
+      <%= f.number_field :pages, placeholder: 'Page Count' %>
+    </div>
 
-<%= f.label :year_published %>
-<%= f.number_field :year_published, placeholder: 'Year' %>
+    <div class="form" id="published">
+      <%= f.label :year_published %>
+      <%= f.number_field :year_published, placeholder: 'Year' %>
+    </div>
 
-<%= f.label :thumbnail %>
-<%= f.text_field :thumbnail, value: '', placeholder: 'Optional URL' %>
-
-<%= f.label :authors %>
-<%= f.text_field :authors, value: '', placeholder: "Split Authors With Comma" %>
-
-<%= f.submit :Save %>
-<% end  %>
+    <div class="form" id="thumbnail">
+      <%= f.label :thumbnail %>
+      <%= f.text_field :thumbnail, value: '', placeholder: 'Optional URL' %>
+    </div>
+    <div class="form" id="">
+      <%= f.label :authors %>
+      <%= f.text_field :authors, value: '', placeholder: "Split Authors w/ Comma" %>
+    </div>
+    <div class="form" id="button">
+      <%= f.submit :Save %>
+    </div>
+  <% end  %>
+</section>

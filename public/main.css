@@ -153,3 +153,24 @@ body {
 #git:hover {
   color: #564444;
 }
+
+.book_form{
+  display: grid;
+  grid-column: 200px 200px 200px 200px 200px 200px;
+  grid-row: auto;
+  justify-content: center;
+  font-family: 'Comfortaa', cursive;
+}
+
+.review_form{
+  display: grid;
+  grid-column: 200px 200px 200px 200px 200px;
+  grid-row: auto;
+  justify-content: center;
+  font-family: 'Comfortaa', cursive;
+}
+
+.form{
+  padding: 5px;
+  font-family: 'Comfortaa', cursive;
+}

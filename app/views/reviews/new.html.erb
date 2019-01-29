@@ -1,16 +1,26 @@
+<section class="review_form">
+
 <h1>New Review</h1>
 <%= form_for @review, url: book_reviews_path(@book) do |f|%>
-<%= f.label :title %>
-<%= f.text_field :title %>
-
-<%= f.label :description %>
-<%= f.text_area :description %>
-
-<%= f.label :rating %>
-<%= f.select :rating, 1..5 %>
-
-<%= f.label :user %>
-<%= f.text_field :user %>
-
-<%= f.submit :Save %>
+  <div class="form" id="title">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form" id="description">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="form" id="rating">
+    <%= f.label :rating %>
+    <%= f.select :rating, 1..5 %>
+  </div>
+  <div class="form" id="user">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+  </div>
+  <div class="form" id="save">
+   <%= f.submit :Save %>
+  </div>
 <% end %>
+
+</section>
