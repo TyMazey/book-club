@@ -15,7 +15,13 @@
 <aside class="statistics">
   <div id="best-books">
     <% @best_books.each do |book| %>
-    <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
     <% end %>
+  </div>
+  <div id="worst-books">
+    <% @worst_books.each do |book| %>
+      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+    <% end %>
+
   </div>
 </aside>
