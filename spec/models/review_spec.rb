@@ -41,9 +41,9 @@ RSpec.describe Review, type: :model do
         review_1 = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
         review_2 = book_1.reviews.create(title: "Meh", description: "it's not great", rating: 2, user: user_1)
 
-        reviews = [review_1, review_2]
+        review_2.delete_review(review_2.id)
 
-        expect(review_2.delete_review).to_not eq(reviews)
+        expect(Review.all).to_not include(review_2)
       end
     end
   end

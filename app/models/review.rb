@@ -13,4 +13,8 @@ class Review < ApplicationRecord
       all
     end
   end
+
+  def delete_review(id)
+    Review.destroy(id)
+  end
 end
