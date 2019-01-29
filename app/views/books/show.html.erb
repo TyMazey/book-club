@@ -19,17 +19,21 @@
 
 <section class="statistics">
   <h1>Overall Rating: <%= @book.average_rating %></h1>
-  <h3>Top Reviews:</h3>
-  <% @book.reviews.top_reviews.each do |review| %>
-    <p><%= review.title %></p>
-    <p>Rating: <%= review.rating %></p>
-    <p><%= review.user.name %></p>
-  <% end %>
+  <div id="top-reviews">
+    <h3>Top Reviews:</h3>
+    <% @book.top_reviews.each do |review| %>
+      <p>Title: <%= review.title %></p>
+      <p>Rating: <%= review.rating %></p>
+      <p><%= review.user.name %></p>
+    <% end %>
+  </div>
 
-  <h3>Bottom Reviews</h3>
-  <% @book.reviews.bottom_reviews.each do |review| %>
-  <p><%= review.title %></p>
-  <p><%= review.rating %></p>
-  <p><%= review.user.name %></p>
-  <% end %>
+  <div id="bottom-reviews">
+    <h3>Bottom Reviews</h3>
+      <% @book.bottom_reviews.each do |review| %>
+      <p>Title: <%= review.title %></p>
+      <p><%= review.rating %></p>
+      <p><%= review.user.name %></p>
+    <% end %>
+  </div>
 </section>
