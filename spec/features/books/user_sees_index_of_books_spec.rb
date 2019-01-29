@@ -78,10 +78,10 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#best-books' do
-      expect(page).to have_content('Booky books: 5')
-      expect(page).to have_content('Abby reads: 4')
-      expect(page).to have_content('Fancy Books: 4')
-      expect(page).to_not have_content('Not this one: 1')
+      expect(page).to have_content('Booky books: 5.0 out of 5')
+      expect(page).to have_content('Abby reads: 4.0 out of 5')
+      expect(page).to have_content('Fancy Books: 4.0 out of 5')
+      expect(page).to_not have_content('Not this one: 1.0 out of 5')
     end
   end
 
@@ -99,10 +99,10 @@ RSpec.describe 'As a vistitor', type: :feature do
     visit books_path
 
     within '#worst-books' do
-      expect(page).to have_content('Abby reads: 4 out of 5')
-      expect(page).to have_content('Fancy Books: 4 out of 5')
-      expect(page).to have_content('Not this one: 1 out of 5')
-      expect(page).to_not have_content('Booky books: 5 out of 5')
+      expect(page).to have_content('Abby reads: 4.0 out of 5')
+      expect(page).to have_content('Fancy Books: 4.0 out of 5')
+      expect(page).to have_content('Not this one: 1.0 out of 5')
+      expect(page).to_not have_content('Booky books: 5.0 out of 5')
     end
   end
 
