@@ -59,4 +59,24 @@ RSpec.describe 'As a visitor', type: :feature do
     end
   end
 
+  it 'had a delete button to remove the shown book' do
+    author = Author.create(name: "steve jobs")
+    user_1 = User.create(name: "bob")
+    book_1 = author.books.create(title: "Story about me", pages: 300, year_published: 300, thumbnail: "gibbergabber")
+    book_2 = author.books.create(title: "Huzzah", pages: 234, year_published: 553, thumbnail: "gibbergabber")
+    book_3 = author.books.create(title: "Hooray", pages: 4563, year_published: 343, thumbnail: "gibbergabber")
+    review_1 = book_1.reviews.create(title: "spectacular", description: "Really", rating: 5, user: user_1)
+    review_2 = book_1.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_1)
+    review_3 = book_1.reviews.create(title: "meh", description: "Really", rating: 4, user: user_1)
+    review_4 = book_1.reviews.create(title: "horrible", description: "Really", rating: 2, user: user_1)
+
+    visit(book_path(book_1))
+
+    within '#primary-info' do
+      expect(page).to have_content(book_1.title)
+      click_button('Delete Book')
+    end
+    
+    expect(current_path).to eq(books_path)
+  end
 end
