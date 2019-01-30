@@ -1,7 +1,10 @@
 <% @books.each do |book|%>
-  <div id="book-<%=book.name_as_kebab%>">
+  <div id="book-<%=book.id%>">
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
     <h1><%= book.title %></h1>
+    <% book.authors.each do |author| %>
+    <p><%= author.name %></p>
+    <% end %>
     <p><%= book.pages %></p>
     <p><%= book.year_published %></p>
   </div>
