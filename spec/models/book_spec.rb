@@ -24,9 +24,7 @@ RSpec.describe Book, type: :model do
         author_2 = Author.create(name: "Rickey Bobby")
         book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author, author_2])
 
-        new_book = book_1.remove_author(author)
-
-        expect(new_book.authors).to have_content(author_2)
+        expect(book_1.remove_author(author)).to eq([author_2])
       end
     end
   end

@@ -6,4 +6,8 @@ class Book < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :pages
   validates_presence_of :year_published
+
+  def remove_author(author)
+    authors.where.not(id: author.id)
+  end
 end
