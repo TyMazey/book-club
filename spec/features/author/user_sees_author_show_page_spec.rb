@@ -10,13 +10,18 @@ RSpec.describe 'as visitor', type: :feature do
     visit author_path(author)
 
     expect(page).to have_content(author.name)
-    expect(page).to have_content(book_1.title)
-    expect(page).to have_content(book_1.pages)
-    expect(page).to have_content(book_1.year_published)
-    expect(page).to have_xpath("//img[@src='picture url']")
-    expect(page).to have_content(book_2.title)
-    expect(page).to have_content(book_2.pages)
-    expect(page).to have_content(book_2.year_published)
-    expect(page).to have_xpath("//img[@src='picture url']")
+
+    within '#books' do
+      expect(page).to have_content(book_1.title)
+      expect(page).to have_content(book_1.pages)
+      expect(page).to have_content(book_1.year_published)
+      expect(page).to_not have_content(author.name)
+      expect(page).to have_xpath("//img[@src='picture url']")
+      expect(page).to have_content(book_2.title)
+      expect(page).to have_content(book_2.pages)
+      expect(page).to have_content(book_2.year_published)
+      expect(page).to_not have_content(author.name)
+      expect(page).to have_xpath("//img[@src='picture url']")
+    end
   end
 end
