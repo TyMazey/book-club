@@ -4,7 +4,4 @@ class Author < ApplicationRecord
   has_many :books, through: :author_books
 
   validates_presence_of :name
-
-  def remove_self_from_books
-  end
 end
