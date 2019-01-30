@@ -11,7 +11,7 @@ RSpec.describe 'as visitor', type: :feature do
 
     expect(page).to have_content(author.name)
 
-    within '#books' do
+    within '.books' do
       expect(page).to have_content(book_1.title)
       expect(page).to have_content(book_1.pages)
       expect(page).to have_content(book_1.year_published)
