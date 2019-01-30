@@ -4,7 +4,8 @@ RSpec.describe Book, type: :model do
 
   describe 'relationships' do
 
-    it {should have_many :authors}
+    it {should have_many :author_books}
+    it {should have_many(:authors).through :author_books}
   end
 
   describe 'validations' do
@@ -12,7 +13,7 @@ RSpec.describe Book, type: :model do
     it {should validate_presence_of :title}
     it {should validate_presence_of :pages}
     it {should validate_presence_of :year_published}
-  end 
+  end
 
   describe 'instance methods' do
     describe '.name_as_kebab' do
