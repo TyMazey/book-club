@@ -1,0 +1,18 @@
+<img src="<%= @book.thumbnail %>" alt="book-<%= @book.id %>">
+
+<h1><%= @book.title %></h1>
+
+<% @book.authors.each do |author| %>
+  <p><%= author.name %></p>
+<% end %>
+
+<p> <%= @book.pages %> </p>
+<p><%= @book.year_published %></p>
+
+
+<% @book.reviews.each do |review| %>
+  <h3><%= review.title %></h3>
+  <h3><%= review.description %></h3>
+  <h3><%= review.rating %></h3>
+  <h3><%= review.user.name %></h3>
+<% end %>
