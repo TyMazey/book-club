@@ -5,6 +5,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.where(id: params[:id]).first
+    @book = Book.find(params[:id])
   end
 end

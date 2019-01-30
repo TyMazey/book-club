@@ -17,5 +17,15 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'instance methods' do
+
+    describe '.remove_author' do
+      it 'should remove an authors name' do
+        author = Author.create(name: "Baby Jesus")
+        author_2 = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author, author_2])
+
+        expect(book_1.remove_author(author)).to eq([author_2])
+      end
+    end
   end
 end
