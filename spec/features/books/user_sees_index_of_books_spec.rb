@@ -7,7 +7,7 @@ RSpec.describe 'As a vistitor', type: :feature do
     book_1 = author.books.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish")
     book_2 = author.books.create(title: "Dante's Inferno", pages: 500, year_published: 1840, thumbnail: "gibberfish")
 
-    visit '/books'
+    visit books_path
 
     expect(page).to have_content(book_1.title)
     expect(page).to have_content(book_2.title)
@@ -18,7 +18,7 @@ RSpec.describe 'As a vistitor', type: :feature do
     author_2 = Author.create(name: "Rickey Bobby")
     book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author, author_2])
 
-    visit '/books'
+    visit books_path
 
     within "#book-#{book_1.id}" do
       expect(page).to have_content(book_1.title)

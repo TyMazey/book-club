@@ -6,7 +6,7 @@ RSpec.describe 'As a visitor', type: :feature do
     author = Author.create(name: "steve jobs")
     book = author.books.create(title: "Story about me", pages: 300, year_published: 300, thumbnail: "gibbergabber")
 
-    visit "/books/#{book.id}"
+    visit book_path(book)
 
     expect(page).to have_content(book.title)
     expect(page).to have_content(book.pages)
@@ -21,7 +21,7 @@ RSpec.describe 'As a visitor', type: :feature do
     user = User.create(name: "steve jobs")
     review = book.reviews.create(title: "It sucked", description: "blah blah blah", rating: 5, user_id: user.id)
 
-    visit "/books/#{book.id}"
+    visit book_path(book)
 
     expect(page).to have_content(review.title)
     expect(page).to have_content(review.description)
