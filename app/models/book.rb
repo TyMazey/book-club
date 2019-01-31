@@ -10,4 +10,12 @@ class Book < ApplicationRecord
   def remove_author(author)
     authors.where.not(id: author.id)
   end
+
+  def total_reviews
+    reviews.count
+  end
+
+  def average_rating
+    reviews.average(:rating)
+  end
 end
