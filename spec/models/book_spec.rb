@@ -29,23 +29,33 @@ RSpec.describe Book, type: :model do
     end
 
     describe '.average_rating' do
-      author = Author.create(name: "Rickey Bobby")
-      book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user_id: 1)
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user_id: 2)
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user_id: 5)
+      it 'can return the average rating for a book' do
+        author = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+        user_1 = User.create(name: "bob")
+        user_2 = User.create(name: "rob")
+        user_3 = User.create(name: "tod")
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
 
-      expect(book_1.average_rating).to eq(3)
+        expect(book_1.average_rating).to eq(3)
+      end
     end
 
     describe '.total_reviews' do
-      author = Author.create(name: "Rickey Bobby")
-      book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user_id: 1)
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user_id: 2)
-      review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user_id: 5)
+      it 'can return the total number of reviews for a book' do
+        author = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+        user_1 = User.create(name: "bob")
+        user_2 = User.create(name: "rob")
+        user_3 = User.create(name: "tod")
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+        review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
 
-      expect(book_1.total_reviews).to eq(3)
+        expect(book_1.total_reviews).to eq(3)
+      end
     end
   end
 end

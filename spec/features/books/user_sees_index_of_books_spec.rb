@@ -31,11 +31,18 @@ RSpec.describe 'As a vistitor', type: :feature do
   end
 
   it 'shows average rating for books' do
+
+
     author = Author.create(name: "Rickey Bobby")
     book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
-    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user_id: 1)
-    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user_id: 2)
-    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user_id: 5)
+    user_1 = User.create(name: "bob")
+    user_2 = User.create(name: "rob")
+    user_3 = User.create(name: "tod")
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
+    
+    visit books_path
 
     expect(page).to have_content("Average Rating: 3")
     expect(page).to have_content("Total Reviews: 3")
