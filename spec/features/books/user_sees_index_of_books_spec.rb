@@ -29,4 +29,15 @@ RSpec.describe 'As a vistitor', type: :feature do
       expect(page).to have_xpath("//img[@src='gibberish']")
     end
   end
+
+  it 'shows average rating for books' do
+    author = Author.create(name: "Rickey Bobby")
+    book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user_id: 1)
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user_id: 2)
+    review = book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user_id: 5)
+
+    expect(page).to have_content("Average Rating: 3")
+    expect(page).to have_content("Total Reviews: 3")
+  end
 end
