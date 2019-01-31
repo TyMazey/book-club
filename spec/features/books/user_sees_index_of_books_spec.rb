@@ -30,6 +30,22 @@ RSpec.describe 'As a vistitor', type: :feature do
     end
   end
 
+  it 'has link to book show page' do
+    author = Author.create(name: "Bobby Bob")
+    book_1 = author.books.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish")
+
+    visit books_path
+
+    # save_and_open_page
+
+    click_link("Moby Dick", :text => "Moby Dick")
+
+    expect(current_path).to eq book_path(book_1)
+    expect(page).to have_content(book_1.title)
+    expect(page).to have_content(book_1.pages)
+    expect(page).to have_content(book_1.year_published)
+  end
+  
   it 'shows average rating for books' do
 
 

@@ -1,7 +1,7 @@
 <% @books.each do |book|%>
   <section id="book-<%=book.id%>">
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
-    <h1><%= book.title %></h1>
+    <h1> <a href="/books/<%= book.id %>"> <%= book.title %></a></h1>
     <p>Average Rating: <%= book.average_rating %></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
     <% book.authors.each do |author| %>
