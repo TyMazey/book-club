@@ -49,7 +49,7 @@ RSpec.describe 'As a vistitor', type: :feature do
   it 'can select links to sort the books' do
     author = Author.create(name: "Rickey Bobby")
     book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
-    book_2 = Book.create(title: "Sobby Rick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+    book_2 = Book.create(title: "Sobby Rick", pages: 200, year_published: 1900, thumbnail: "gibberish", authors: [author])
     user_1 = User.create(name: "bob")
     user_2 = User.create(name: "rob")
     user_3 = User.create(name: "tod")
@@ -61,6 +61,36 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     visit books_path
     click_on 'Highest Rated'
+
+    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+
+    visit books_path
+    click_on 'Lowest Rating'
+
+    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+
+    visit books_path
+    click_on 'Most Pages'
+
+    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+
+    visit books_path
+    click_on 'Least Pages'
+
+    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+
+    visit books_path
+    click_on 'Most Reviews'
+
+    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+
+    visit books_path
+    click_on 'Least Reviews'
 
     expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
     expect(page.all('.merchant')[1]).to have_content('Moby Dick')
