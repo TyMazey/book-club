@@ -8,7 +8,7 @@
 <% @books.each do |book|%>
   <section class="info-display" id="book-<%=book.id%>">
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
-    <h1><%= book.title %></h1>
+    <h1> <a href="/books/<%= book.id %>"> <%= book.title %></a></h1>
     <p>Average Rating: <%= book.average_rating %></p>
     <p>Total Reviews: <%= book.total_reviews %></p>
     <% book.authors.each do |author| %>
@@ -18,3 +18,22 @@
     <p><%= book.year_published %></p>
   </section>
 <% end %>
+
+<aside class="statistics">
+  <div id="best-books">
+    <% @best_books.each do |book| %>
+      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+    <% end %>
+  </div>
+  <div id="worst-books">
+    <% @worst_books.each do |book| %>
+      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+    <% end %>
+  </div>
+  <div id="user-reviews">
+    <p>Top Reviewers:</p>
+    <% @user_reviews.each do |user| %>
+      <p><%= user.name %>: <%= user.count_reviews %></p>
+      <% end %>
+  </div>
+</aside>
