@@ -132,7 +132,7 @@ RSpec.describe 'As a vistitor', type: :feature do
   it 'has a link to create a new book' do
 
     visit books_path
-    click_link 'New Book'
+    click_link 'Add New Book'
 
     expect(current_path).to eq(new_book_path)
     expect(page).to have_content('New Book')

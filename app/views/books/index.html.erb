@@ -1,3 +1,5 @@
+<%= link_to 'Add New Book', new_book_path %>
+
 <% @books.each do |book|%>
   <section id="book-<%=book.id%>">
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
