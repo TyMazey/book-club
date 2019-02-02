@@ -82,7 +82,7 @@ RSpec.describe Book, type: :model do
         expect(Book.sort_by('least_reviews')).to eq([book_2, book_1])
       end
     end
-
+  end
   describe 'class methods' do
     it '.best_books' do
       user_1 = User.create(name: "bob")
@@ -97,7 +97,7 @@ RSpec.describe Book, type: :model do
       book_4.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_1)
 
       top_3 = [book_1, book_2, book_3]
-      
+
       expect(Book.best_books).to eq(top_3)
     end
 
