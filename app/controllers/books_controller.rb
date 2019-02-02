@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = Book.new(authors: [])
     @authors = Author.all
   end
 
@@ -27,6 +27,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :pages, :year_published, :thumbnail)
+    params.require(:book).permit(:title, :pages, :year_published, :thumbnail, authors: [])
   end
 end
