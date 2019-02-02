@@ -12,16 +12,9 @@
 
 <%= f.label :thumbnail %>
 <%= f.text_field :thumbnail %>
-<div id="author">
-  <% @authors.each do |author| %>
-  <%= f.label :author.name %>
-  <%= f.check_box :authors, multiple: true%>
-  <% end %>
-</div>
-<div id="co-author">
-  <%= f.label :'Co-Authors' %>
-  <%= f.collection_select(:authors, @authors, :id, :name, include_hidden: false) %>
-</div>
+
+<%= f.label :authors %>
+<%= f.text_field :authors %>
 
 <%= f.submit :Save %>
 <% end  %>

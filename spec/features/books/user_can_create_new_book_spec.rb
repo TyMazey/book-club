@@ -11,7 +11,7 @@ RSpec.describe 'as a visitor', type: :feature do
     fill_in 'Pages', with: '500'
     fill_in 'Year published', with: '2002'
     fill_in 'Thumbnail', with: 'picture.jpg'
-    fill_in 'Author', with 'Rickey Bobby'
+    fill_in 'Authors', with: 'Rickey Bobby'
     click_button 'Save'
     expect(page).to have_content('Talledega Knights')
     expect(page).to have_content('Rickey Bobby')
@@ -27,7 +27,7 @@ RSpec.describe 'as a visitor', type: :feature do
     fill_in 'Pages', with: '500'
     fill_in 'Year published', with: '2002'
     fill_in 'Thumbnail', with: 'picture.jpg'
-    fill_in 'Author', with: 'Rickey Bobby, Joe Shmoe'
+    fill_in 'Authors', with: 'Rickey Bobby, Joe Shmoe'
     click_button 'Save'
     expect(page).to have_content('Talledega Knights')
     expect(page).to have_content('Rickey Bobby')
@@ -42,13 +42,12 @@ RSpec.describe 'as a visitor', type: :feature do
     fill_in 'Pages', with: '500'
     fill_in 'Year published', with: '2002'
     fill_in 'Thumbnail', with: 'picture.jpg'
-    fill_in 'Author', with: 'Rickey Bobby, Joe Shmoe'
+    fill_in 'Authors', with: 'Rickey Bobby, Joe Shmoe'
     click_button 'Save'
     expect(page).to have_content('Talledega Knights')
     expect(page).to have_content('Rickey Bobby')
     expect(page).to have_content('Joe Shmoe')
-    path_id = Author.where(name: 'Rickey Bobby').id
-    click_link ('Rickey Bobby')
-    expect(current_path).to eq(author_path(path_id))
+    Author.where(name: 'Rickey Bobby')
+    Author.where(name: 'Joe Shmoe')
   end
 end

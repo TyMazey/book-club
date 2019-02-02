@@ -8,6 +8,7 @@
     <p>Total Reviews: <%= book.total_reviews %></p>
     <% book.authors.each do |author| %>
     <p><%= author.name %></p>
+    <a href=author_path(author.id)><%= author.name %></a>
     <% end %>
     <p><%= book.pages %></p>
     <p><%= book.year_published %></p>
