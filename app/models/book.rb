@@ -18,4 +18,12 @@ class Book < ApplicationRecord
   def average_rating
     reviews.average(:rating)
   end
+
+  def self.best_books
+    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*").group(:id).order("book_rating DESC").limit(3)
+  end
+
+  def self.worst_books
+    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*").group(:id).order("book_rating ASC").limit(3)
+  end
 end
