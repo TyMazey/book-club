@@ -12,5 +12,21 @@ class BooksController < ApplicationController
   end
 
   def new
+    @book = Book.new
+    @authors = Author.all
+  end
+
+  def create
+    authors = Author.where(id: params[:book][:authors])
+    @book = Book.new(book_params)
+    @book.update(authors: authors)
+    @book.save
+    redirect_to book_path(@book.id)
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :pages, :year_published, :thumbnail)
   end
 end
