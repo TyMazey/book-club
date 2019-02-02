@@ -60,39 +60,34 @@ RSpec.describe 'As a vistitor', type: :feature do
     book_2.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_2)
 
     visit books_path
-    click_on 'Highest Rated'
+    click_on 'Highest Rating'
 
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
 
-    visit books_path
     click_on 'Lowest Rating'
 
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
 
-    visit books_path
     click_on 'Most Pages'
 
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
 
-    visit books_path
     click_on 'Least Pages'
 
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
 
-    visit books_path
     click_on 'Most Reviews'
 
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
 
-    visit books_path
     click_on 'Least Reviews'
 
-    expect(page.all('.merchant')[0]).to have_content('Sobby Rick')
-    expect(page.all('.merchant')[1]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
   end
 end
