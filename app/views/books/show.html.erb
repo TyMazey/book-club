@@ -16,3 +16,5 @@
   <h3><%= review.rating %></h3>
   <h3><%= review.user.name %></h3>
 <% end %>
+
+<%= link_to 'New Review', new_book_review_path(@book.id) %>

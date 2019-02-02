@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :books
   resources :authors, only: [:show]
   resources :users, only: [:show]
+  resources :books do
+    resources :reviews, shallow: true
+  end
 end
