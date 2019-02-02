@@ -19,6 +19,36 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
+  def self.sort_by(params)
+    if params == 'highest_rated'
+      select("books.*, avg(reviews.rating) AS avg_rating")
+      .joins(:reviews)
+      .group(:book_id, :id)
+      .order("avg_rating DESC")
+    elsif params == 'lowest_rated'
+      select("books.*, avg(reviews.rating) AS avg_rating")
+      .joins(:reviews)
+      .group(:book_id, :id)
+      .order("avg_rating ASC")
+    elsif params == 'most_pages'
+      order(pages: :desc)
+    elsif params == 'least_pages'
+      order(pages: :asc)
+    elsif params == 'most_reviews'
+      select("books.*, count(reviews) AS total_reviews")
+      .joins(:reviews)
+      .group(:book_id, :id)
+      .order("total_reviews DESC")
+    elsif params == 'least_reviews'
+      select("books.*, count(reviews) AS total_reviews")
+      .joins(:reviews)
+      .group(:book_id, :id)
+      .order("total_reviews ASC")
+    else
+      Book.all
+    end
+  end   
+
   def self.best_books
     joins(:reviews).select("avg(reviews.rating) as book_rating, books.*").group(:id).order("book_rating DESC").limit(3)
   end

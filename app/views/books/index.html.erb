@@ -1,7 +1,13 @@
 <%= link_to 'Add New Book', new_book_path %>
+<%= link_to "Highest Rating", books_path(sort: :highest_rated) %>
+<%= link_to "Lowest Rating", books_path(sort: :lowest_rated) %>
+<%= link_to "Most Pages", books_path(sort: :most_pages) %>
+<%= link_to "Least Pages", books_path(sort: :least_pages) %>
+<%= link_to "Most Reviews", books_path(sort: :most_reviews) %>
+<%= link_to "Least Reviews", books_path(sort: :least_reviews) %>
 
 <% @books.each do |book|%>
-  <section id="book-<%=book.id%>">
+  <section class="info-display" id="book-<%=book.id%>">
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
     <h1> <a href="/books/<%= book.id %>"> <%= book.title %></a></h1>
     <p>Average Rating: <%= book.average_rating %></p>

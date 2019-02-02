@@ -47,8 +47,6 @@ RSpec.describe 'As a vistitor', type: :feature do
   end
 
   it 'shows average rating for books' do
-
-
     author = Author.create(name: "Rickey Bobby")
     book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
     user_1 = User.create(name: "bob")
@@ -62,6 +60,51 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     expect(page).to have_content("Average Rating: 3")
     expect(page).to have_content("Total Reviews: 3")
+  end
+
+  it 'can select links to sort the books' do
+    author = Author.create(name: "Rickey Bobby")
+    book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+    book_2 = Book.create(title: "Sobby Rick", pages: 200, year_published: 1900, thumbnail: "gibberish", authors: [author])
+    user_1 = User.create(name: "bob")
+    user_2 = User.create(name: "rob")
+    user_3 = User.create(name: "tod")
+    book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+    book_1.reviews.create(title: "Amazing", description: "Really", rating: 1, user: user_2)
+    book_1.reviews.create(title: "Amazing", description: "Really", rating: 3, user: user_3)
+    book_2.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+    book_2.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_2)
+
+    visit books_path
+    click_on 'Highest Rating'
+
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
+
+    click_on 'Lowest Rating'
+
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
+
+    click_on 'Most Pages'
+
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
+
+    click_on 'Least Pages'
+
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
+
+    click_on 'Most Reviews'
+
+    expect(page.all('.info-display')[0]).to have_content('Moby Dick')
+    expect(page.all('.info-display')[1]).to have_content('Sobby Rick')
+
+    click_on 'Least Reviews'
+
+    expect(page.all('.info-display')[0]).to have_content('Sobby Rick')
+    expect(page.all('.info-display')[1]).to have_content('Moby Dick')
   end
 
   it 'shows the three highest rated books' do
