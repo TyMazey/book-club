@@ -58,4 +58,15 @@ RSpec.describe 'as visitor', type: :feature do
       expect(page).to_not have_content('Jeef')
     end
   end
+
+  it 'shows the user if no review has been made on a book for author' do
+    author = Author.create(name: "bob")
+    book = author.books.create(title: "book 1", pages: 100, year_published: 1901, thumbnail: "picture url")
+
+    visit author_path(author.id)
+
+    within '#best-review' do
+      expect(page).to have_content('No Reviews Yet')
+    end
+  end
 end
