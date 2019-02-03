@@ -1,4 +1,11 @@
 <h1><%= @author.name %></h1>
+<section class="best-review">
+  <%= @author.best_review do |review| %>
+  <h4><%= review.title %></h4>
+  <p><%= review.score %></p>
+  <p><%= review.user.name %></p>
+  <% end %>
+</section>
 
 <section class="books">
 <% @books.each do |book|%>
