@@ -46,8 +46,8 @@ RSpec.describe 'as visitor', type: :feature do
     book = author.books.create(title: "book 1", pages: 100, year_published: 1901, thumbnail: "picture url")
     user = User.create(name: 'Bob')
     user_1 = User.create(name: 'Jeef')
-    book.reviews.create(title: 'great', description: 'great', rating: 5, user: user)
-    book.reviews.create(title: 'bad', description: 'bad', rating: 1, user: user_1)
+    book.reviews.create(title: 'Great', description: 'great', rating: 5, user: user)
+    book.reviews.create(title: 'Bad', description: 'bad', rating: 1, user: user_1)
 
     visit author_path(author.id)
 
