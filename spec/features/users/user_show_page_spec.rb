@@ -42,7 +42,7 @@ RSpec.describe 'as a visitor', type: :feature do
 
       visit user_path(user.id)
       click_link 'Oldest Reviews'
-      
+
       within '.reviews' do
         expect(page.all('#single-review')[0]).to have_content('good')
         expect(page.all('#single-review')[1]).to have_content('better')
