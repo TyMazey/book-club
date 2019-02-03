@@ -24,6 +24,14 @@ RSpec.describe Author, type: :model do
 
         expect(author.best_review).to eq(good)
       end
+
+      it 'returns no reviews if an author has none' do
+        author = Author.create(name: "bob")
+        book = author.books.create(title: "book 1", pages: 100, year_published: 1901, thumbnail: "picture url")
+
+
+        expect(author.best_review).to eq('No Reviews Yet')
+      end
     end
   end
 end
