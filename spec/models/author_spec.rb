@@ -22,7 +22,7 @@ RSpec.describe Author, type: :model do
         good = book.reviews.create(title: 'great', description: 'great', rating: 5, user: user)
         bad = book.reviews.create(title: 'bad', description: 'bad', rating: 1, user: user_1)
 
-        expect(author.best_review).to eq([good])
+        expect(author.best_review).to eq(good)
       end
     end
   end

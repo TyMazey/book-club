@@ -51,7 +51,7 @@ RSpec.describe 'as visitor', type: :feature do
 
     visit author_path(author.id)
 
-    within '.best-review' do
+    within '#best-review' do
       expect(page).to have_content('Great')
       expect(page).to have_content('Bob')
       expect(page).to_not have_content('Bad')

@@ -6,6 +6,6 @@ class Author < ApplicationRecord
   validates_presence_of :name
 
   def best_review
-    Review.joins(:book).order(rating: :desc).limit(1)
+    Review.joins(:book).order(rating: :desc).limit(1)[0]
   end
 end

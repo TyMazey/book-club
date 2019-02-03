@@ -1,10 +1,8 @@
 <h1><%= @author.name %></h1>
-<section class="best-review">
-  <%= @author.best_review do |review| %>
-  <h4><%= review.title %></h4>
-  <p><%= review.score %></p>
-  <p><%= review.user.name %></p>
-  <% end %>
+<section id="best-review">
+  <h4><%= @best_review.title %></h4>
+  <p><%= @best_review.rating %></p>
+  <p><%= @best_review.user.name %></p>
 </section>
 
 <section class="books">
