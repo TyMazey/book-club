@@ -6,7 +6,7 @@
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
     <h1> <a href="/books/<%= book.id %>"><%= book.title %></a></h1>
     <% book.remove_author(@author).each do |author| %>
-    <p><%= author.name %></p>
+    <a href="author_path(author.id)">author.name</a>
     <% end %>
     <p><%= book.pages %></p>
     <p><%= book.year_published %></p>

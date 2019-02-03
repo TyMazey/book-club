@@ -171,4 +171,13 @@ RSpec.describe 'As a vistitor', type: :feature do
       expect(page).to have_content('Mac: 1')
     end
   end
+
+  it 'has a link to create a new book' do
+
+    visit books_path
+    click_link 'Add New Book'
+
+    expect(current_path).to eq(new_book_path)
+    expect(page).to have_content('New Book')
+  end
 end
