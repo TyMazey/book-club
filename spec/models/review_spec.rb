@@ -26,8 +26,8 @@ RSpec.describe Review, type: :model do
         review_1 = book_1.reviews.create(title: 'good', description: 'aight', rating: 3, book_id: book_2.id, user_id: user.id)
         review_2 = book_2.reviews.create(title: 'better', description: 'yay', rating: 4, book_id: book_1.id, user_id: user.id)
 
-        expect(Review.sort_by('newest')).to eq([review_2, review_1])
-        expect(Review.sort_by('oldest')).to eq([review_1, review_2])
+        expect(Review.sort_reviews('newest')).to eq([review_2, review_1])
+        expect(Review.sort_reviews('oldest')).to eq([review_1, review_2])
       end
     end
   end
