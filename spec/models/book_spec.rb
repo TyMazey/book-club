@@ -28,6 +28,40 @@ RSpec.describe Book, type: :model do
       end
     end
 
+      describe '.top_reviews' do
+        it 'should show the top three reviews of a book' do
+          author = Author.create(name: "Rickey Bobby")
+          book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+          user_1 = User.create(name: "bob")
+          review_1 = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+          review_2 = book_1.reviews.create(title: "stupendous", description: "Really", rating: 4, user: user_1)
+          review_3 = book_1.reviews.create(title: "meh", description: "Really", rating: 4, user: user_1)
+          review_4 = book_1.reviews.create(title: "super meh", description: "Really", rating: 2, user: user_1)
+
+          high_three = [review_1, review_2, review_3]
+
+          expect(book_1.top_reviews).to eq(high_three)
+          expect(book_1.top_reviews).to_not include(review_4)
+        end
+      end
+
+      describe '.bottom_reviews' do
+        it 'should show the bottom three reviews of a book' do
+          author = Author.create(name: "Rickey Bobby")
+          book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+          user_1 = User.create(name: "bob")
+          review_1 = book_1.reviews.create(title: "spectacular", description: "Really", rating: 5, user: user_1)
+          review_2 = book_1.reviews.create(title: "Amazing", description: "Really", rating: 4, user: user_1)
+          review_3 = book_1.reviews.create(title: "meh", description: "Really", rating: 4, user: user_1)
+          review_4 = book_1.reviews.create(title: "horrible", description: "Really", rating: 2, user: user_1)
+
+          low_3 = [review_4, review_3, review_2]
+
+          expect(book_1.bottom_reviews).to eq(low_3)
+          expect(book_1.bottom_reviews).to_not include(review_1)
+        end
+      end
+
     describe '.average_rating' do
       it 'can return the average rating for a book' do
         author = Author.create(name: "Rickey Bobby")
