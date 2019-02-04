@@ -19,6 +19,15 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
+  def top_reviews
+    reviews.order(rating: :desc, title: :desc).limit(3)
+  end
+
+  def bottom_reviews
+    reviews.order(rating: :asc, title: :desc).limit(3)
+  end
+
+
   def self.sort_by(params)
     if params == 'highest_rated'
       select("books.*, avg(reviews.rating) AS avg_rating")
@@ -47,13 +56,19 @@ class Book < ApplicationRecord
     else
       Book.all
     end
-  end   
+  end
 
   def self.best_books
-    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*").group(:id).order("book_rating DESC").limit(3)
+    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*")
+                    .group(:id)
+                    .order("book_rating DESC")
+                    .limit(3)
   end
 
   def self.worst_books
-    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*").group(:id).order("book_rating ASC").limit(3)
+    joins(:reviews).select("avg(reviews.rating) as book_rating, books.*")
+                    .group(:id)
+                    .order("book_rating ASC")
+                    .limit(3)
   end
 end
