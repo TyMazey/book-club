@@ -1,0 +1,29 @@
+.navbar {
+  background-color: #93937f;
+  color: #f2f2e9;
+  font-family: 'Comfortaa', cursive;
+}
+
+.navbar h1 {
+  display: inline-flex;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.navlink {
+  display: inline-flex;
+  text-align: center;
+  justify-content: flex-end;
+  padding: 20px;
+  text-decoration: none;
+  color: #f6f6f1;
+}
+
+#sort-bar {
+  display: flex;
+  background-color: #a1a18c;
+  justify-content: space-between;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}

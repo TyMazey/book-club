@@ -1,10 +1,12 @@
-<%= link_to 'Add New Book', new_book_path %>
-<%= link_to "Highest Rating", books_path(sort: :highest_rated) %>
-<%= link_to "Lowest Rating", books_path(sort: :lowest_rated) %>
-<%= link_to "Most Pages", books_path(sort: :most_pages) %>
-<%= link_to "Least Pages", books_path(sort: :least_pages) %>
-<%= link_to "Most Reviews", books_path(sort: :most_reviews) %>
-<%= link_to "Least Reviews", books_path(sort: :least_reviews) %>
+<section class = 'navbar' id = 'sort-bar'>
+<%= link_to 'Add New Book', new_book_path, class: 'navlink' %>
+<%= link_to "Highest Rating", books_path(sort: :highest_rated), class: 'navlink' %>
+<%= link_to "Lowest Rating", books_path(sort: :lowest_rated), class: 'navlink' %>
+<%= link_to "Most Pages", books_path(sort: :most_pages), class: 'navlink' %>
+<%= link_to "Least Pages", books_path(sort: :least_pages), class: 'navlink' %>
+<%= link_to "Most Reviews", books_path(sort: :most_reviews), class: 'navlink' %>
+<%= link_to "Least Reviews", books_path(sort: :least_reviews), class: 'navlink' %>
+</section>
 
 <% @books.each do |book|%>
   <section class="info-display" id="book-<%=book.id%>">
