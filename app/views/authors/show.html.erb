@@ -1,4 +1,9 @@
 <h1><%= @author.name %></h1>
+<section id="best-review">
+  <h4><%= @best_review['title'] %></h4>
+  <p><%= @best_review['rating'] %></p>
+  <p><%= @best_review['user'] %></p>
+</section>
 
 <section class="books">
 <% @books.each do |book|%>

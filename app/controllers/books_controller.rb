@@ -19,9 +19,10 @@ class BooksController < ApplicationController
 
   def create
     names = params[:book][:authors].split(',')
-    authors = names.map {|name| Author.find_or_create_by(name: name)}
+    authors = names.map {|name| Author.find_or_create_by(name: name.titlecase)}
     @book = Book.new(book_params)
     @book.update(authors: authors)
+    @book.update(title: @book.title.titlecase)
     @book.save
     redirect_to book_path(@book.id)
   end
