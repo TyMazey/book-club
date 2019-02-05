@@ -3,8 +3,9 @@
     <%= link_to 'Newest Reviews', user_path(user: @user.id, sort: 'newest'), class: 'navlink' %>
     <%= link_to 'Oldest Reviews', user_path(user: @user.id, sort: 'oldest'), class: 'navlink' %>
 </section>
+<section class="reviews">
 <%= @reviews.each do |review| %>
-<section class="info-display">
+<section class="info-display" id="single-review">
   <div class="book-image" id="author-book-img">
     <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
   </div>
@@ -17,3 +18,4 @@
   </div>
 </section>
 <% end %>
+</section>

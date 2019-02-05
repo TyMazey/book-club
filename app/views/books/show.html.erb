@@ -13,13 +13,14 @@
   </div>
 </section>
 <% @book.reviews.each do |review| %>
-
 <section class='info-display'>
   <div class="book-info">
     <h3 id="review-title"><%= review.title %> - <%= review.rating %> out of 5</h3>
     <p><%= review.description %></p>
     <p>User: <%= link_to review.user.name, user_path(review.user.id), class: 'navlink', id:'book-author' %>
+    </section>
 </div>
+<% end %>
 
 <section class="statistics">
   <h1>Overall Rating: <%= @book.average_rating %></h1>
@@ -40,5 +41,3 @@
       <p><%= review.user.name %></p>
     <% end %>
   </div>
-</section>
-<% end %>
