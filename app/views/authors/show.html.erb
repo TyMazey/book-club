@@ -1,20 +1,14 @@
 
 <section class="navbar" id="sort-bar">
   <h1><%= @author.name %></h1>
-  <section id="best-review">
-    <h3>Best Review: </h3>
-    <h4><%= @best_review['title'] %></h4>
-    <p><%= @best_review['rating'] %></p>
-    <p><%= @best_review['user'] %></p>
-  </section>
 </section>
-
+<section class="books">
 <% @books.each do |book|%>
-<section class="info-display">
+<section class="info-display" id="author-book-info">
   <div class='book-image' id='author-book-img'>
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
   </div>
-  <div class="book-info" >
+  <div class="book-info">
     <%= link_to "#{book.title}", book_path(book.id), class: 'navlink', id: 'book-title'%>
     <% book.remove_author(@author).each do |author| %>
       <p>Author(s): </p><%= link_to author.name, author_path(author.id), class: 'navlink', id:'book-author' %>
@@ -22,5 +16,22 @@
     <p>Page Count: <%= book.pages %></p>
     <p>Publication Date: <%= book.year_published %></p>
   </div>
+    <% review = book.top_reviews(1)[0] %>
+    <% if review == nil %>
+    <div class="review-info" id="best-review">
+        <h4 id="review-title">No Reviews Yet</h4>
+        <p>Would you like to be the first?</p>
+        <%= link_to 'Click Here', new_book_review_path(book.id), class: 'navlink' %>
+    </div>
+    <% else %>
+    <div class="review-info" id="best-review-<%= book.id %>">
+        <h4 id="review-title">Top Review</h4>
+        <p>By: <%= review.user.name %></p>
+        <p><%= review.title %></p>
+        <p><%= review.rating %> out of 5</p>
+        <p><%= review.description %></p>
+    </div>
+    <% end %>
 </section>
 <% end %>
+</section>

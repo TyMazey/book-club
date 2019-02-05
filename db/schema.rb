@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190130022102) do
+ActiveRecord::Schema.define(version: 20190205182131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20190130022102) do
     t.string "title"
     t.integer "pages"
     t.integer "year_published"
-    t.string "thumbnail"
+    t.string "thumbnail", default: "https://www.mobileread.com/forums/attachment.php?attachmentid=111264&d=1378642555"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

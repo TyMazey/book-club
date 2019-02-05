@@ -19,8 +19,8 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def top_reviews
-    reviews.order(rating: :desc, title: :desc).limit(3)
+  def top_reviews(amount)
+    reviews.order(rating: :desc, title: :desc).limit(amount)
   end
 
   def bottom_reviews
@@ -30,13 +30,13 @@ class Book < ApplicationRecord
 
   def self.sort_by(params)
     if params == 'highest_rated'
-      select("books.*, avg(reviews.rating) AS avg_rating")
-      .joins(:reviews)
+      select("books.*, avg(COALESCE(reviews.rating, 0)) AS avg_rating")
+      .left_outer_joins(:reviews)
       .group(:book_id, :id)
       .order("avg_rating DESC")
     elsif params == 'lowest_rated'
-      select("books.*, avg(reviews.rating) AS avg_rating")
-      .joins(:reviews)
+      select("books.*, avg(COALESCE(reviews.rating, 0)) AS avg_rating")
+      .left_outer_joins(:reviews)
       .group(:book_id, :id)
       .order("avg_rating ASC")
     elsif params == 'most_pages'
@@ -45,12 +45,12 @@ class Book < ApplicationRecord
       order(pages: :asc)
     elsif params == 'most_reviews'
       select("books.*, count(reviews) AS total_reviews")
-      .joins(:reviews)
+      .left_outer_joins(:reviews)
       .group(:book_id, :id)
       .order("total_reviews DESC")
     elsif params == 'least_reviews'
       select("books.*, count(reviews) AS total_reviews")
-      .joins(:reviews)
+      .left_outer_joins(:reviews)
       .group(:book_id, :id)
       .order("total_reviews ASC")
     else

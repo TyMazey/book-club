@@ -40,8 +40,8 @@ RSpec.describe Book, type: :model do
 
           high_three = [review_1, review_2, review_3]
 
-          expect(book_1.top_reviews).to eq(high_three)
-          expect(book_1.top_reviews).to_not include(review_4)
+          expect(book_1.top_reviews(3)).to eq(high_three)
+          expect(book_1.top_reviews(3)).to_not include(review_4)
         end
       end
 

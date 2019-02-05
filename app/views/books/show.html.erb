@@ -1,3 +1,28 @@
+<section class="navbar" id="author-book-info">
+  <div id="overall">
+  <h1>Overall Rating: <%= @book.average_rating %></h1>
+  </div>
+  <div id="top-reviews">
+    <h3 id='review-title'>Top Reviews:</h3>
+    <% @book.top_reviews(3).each do |review| %>
+    <div class="review-scroll">
+    <p>Title: <%= review.title %></p>
+    <p>Rating: <%= review.rating %></p>
+    <p>By: <%= review.user.name %></p>
+    </div>
+    <% end %>
+  </div>
+  <div id="bottom-reviews">
+    <h3 id='review-title'>Bottom Reviews: </h3>
+    <div class="review-scroll">
+    <% @book.bottom_reviews.each do |review| %>
+    <p>Title: <%= review.title %></p>
+    <p><%= review.rating %></p>
+    <p>By: <%= review.user.name %></p>
+  </div>
+    <% end %>
+  </div>
+</section>
 <section class="info-display">
   <div class="book-image">
     <img src="<%= @book.thumbnail %>" alt="book-<%= @book.id %>">
@@ -14,32 +39,11 @@
   </div>
 </section>
 <% @book.reviews.each do |review| %>
-
 <section class='info-display'>
   <div class="book-info">
     <h3 id="review-title"><%= review.title %> - <%= review.rating %> out of 5</h3>
     <p><%= review.description %></p>
     <p>User: <%= link_to review.user.name, user_path(review.user.id), class: 'navlink', id:'book-author' %>
+    </section>
 </div>
-
-<section class="statistics">
-  <h1>Overall Rating: <%= @book.average_rating %></h1>
-  <div id="top-reviews">
-    <h3>Top Reviews:</h3>
-    <% @book.top_reviews.each do |review| %>
-      <p>Title: <%= review.title %></p>
-      <p>Rating: <%= review.rating %></p>
-      <p><%= review.user.name %></p>
-    <% end %>
-  </div>
-
-  <div id="bottom-reviews">
-    <h3>Bottom Reviews</h3>
-      <% @book.bottom_reviews.each do |review| %>
-      <p>Title: <%= review.title %></p>
-      <p><%= review.rating %></p>
-      <p><%= review.user.name %></p>
-    <% end %>
-  </div>
-</section>
 <% end %>

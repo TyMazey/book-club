@@ -120,14 +120,14 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     visit books_path
 
-    within '#best-books' do
+    within '#top-reviews' do
       click_on('Booky books:')
       expect(current_path).to eq(book_path(book_1.id))
     end
 
     visit(books_path)
 
-    within '#best-books' do
+    within '#top-reviews' do
       click_on('Abby reads:')
       expect(current_path).to eq(book_path(book_2.id))
     end
@@ -146,14 +146,14 @@ RSpec.describe 'As a vistitor', type: :feature do
 
     visit books_path
 
-    within '#worst-books' do
+    within '#bottom-reviews' do
       click_on('Abby reads:')
       expect(current_path).to eq(book_path(book_2))
     end
 
     visit books_path
 
-    within '#worst-books' do
+    within '#bottom-reviews' do
       click_on('Not this one:')
       expect(current_path).to eq(book_path(book_4))
     end

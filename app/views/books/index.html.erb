@@ -7,21 +7,29 @@
 <%= link_to "Most Reviews", books_path(sort: :most_reviews), class: 'navlink' %>
 <%= link_to "Least Reviews", books_path(sort: :least_reviews), class: 'navlink' %>
 </section>
-<section class='navbar' id='statistics'>
-  <div id="best-books">
+<section class="navbar" id="author-book-info">
+  <div id="top-reviews">
+    <h3>Top 3 Rated Books:</h3>
     <% @best_books.each do |book| %>
+    <div class="review-scroll">
     <%= link_to "#{book.title}: ", book_path(book.id), class: 'navlink' %><p><%= book.average_rating %> out of 5</p>
+    </div>
     <% end %>
   </div>
-  <div id="worst-books">
+  <div id="bottom-reviews">
+    <h3>Lowest 3 Rated Books</h3>
     <% @worst_books.each do |book| %>
+    <div class="review-scroll">
     <%= link_to "#{book.title}: ", book_path(book.id), class: 'navlink' %><p><%= book.average_rating %> out of 5</p>
+    </div>
     <% end %>
   </div>
   <div id="user-reviews">
-    <p>Top Reviewers:</p>
+    <h3>Top 3 Reviewers:</h3>
     <% @user_reviews.each do |user| %>
-    <%= link_to "#{user.name}: ", user_path(user.id), class: 'navlink'%><p><%= user.count_reviews %></p>
+    <div class="review-scroll">
+    <%= link_to "#{user.name}: ", user_path(user.id), class: 'navlink'%><p><%= user.count_reviews %> - Review(s)</p>
+    </div>
     <% end %>
   </div>
 </section>
