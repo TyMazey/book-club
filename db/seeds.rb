@@ -17,7 +17,7 @@ o_scott = Author.create(name: ' Orson Scott Card')
 a_burgess = Author.create(name: 'Anthony Burgess')
 p_coelho = Author.create(name: 'Paulo Coelho')
 t_pratchett = Author.create(name: 'Terry Pratchett')
-n_gaimen = Author.create('Neil Gaiman')
+n_gaimen = Author.create(name: 'Neil Gaiman')
 
 Book.destroy_all
 Book.create(title: 'The Divine Comedy', pages: 352, year_published: 1320, thumbnail: 'https://prodimage.images-bn.com/pimages/9781435162082_p0_v2_s550x406.jpg', authors: [dante])
