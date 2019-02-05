@@ -1,41 +1,44 @@
-<%= link_to 'Add New Book', new_book_path %>
-<%= link_to "Highest Rating", books_path(sort: :highest_rated) %>
-<%= link_to "Lowest Rating", books_path(sort: :lowest_rated) %>
-<%= link_to "Most Pages", books_path(sort: :most_pages) %>
-<%= link_to "Least Pages", books_path(sort: :least_pages) %>
-<%= link_to "Most Reviews", books_path(sort: :most_reviews) %>
-<%= link_to "Least Reviews", books_path(sort: :least_reviews) %>
-
-<% @books.each do |book|%>
-  <section class="info-display" id="book-<%=book.id%>">
-    <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
-    <h1> <a href="/books/<%= book.id %>"> <%= book.title %></a></h1>
-    <p>Average Rating: <%= book.average_rating %></p>
-    <p>Total Reviews: <%= book.total_reviews %></p>
-    <% book.authors.each do |author| %>
-    <p><%= author.name %></p>
-    <%= link_to author.name, author_path(author.id) %>
-    <% end %>
-    <p><%= book.pages %></p>
-    <p><%= book.year_published %></p>
-  </section>
-<% end %>
-
-<aside class="statistics">
+<section class = 'navbar' id = 'sort-bar'>
+<%= link_to 'Add New Book', new_book_path, class: 'navlink' %>
+<%= link_to "Highest Rating", books_path(sort: :highest_rated), class: 'navlink' %>
+<%= link_to "Lowest Rating", books_path(sort: :lowest_rated), class: 'navlink' %>
+<%= link_to "Most Pages", books_path(sort: :most_pages), class: 'navlink' %>
+<%= link_to "Least Pages", books_path(sort: :least_pages), class: 'navlink' %>
+<%= link_to "Most Reviews", books_path(sort: :most_reviews), class: 'navlink' %>
+<%= link_to "Least Reviews", books_path(sort: :least_reviews), class: 'navlink' %>
+</section>
+<section class='navbar' id='statistics'>
   <div id="best-books">
     <% @best_books.each do |book| %>
-      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+    <%= link_to "#{book.title}: ", book_path(book.id), class: 'navlink' %><p><%= book.average_rating %> out of 5</p>
     <% end %>
   </div>
   <div id="worst-books">
     <% @worst_books.each do |book| %>
-      <p><%= book.title %>: <%= book.average_rating %> out of 5</p>
+    <%= link_to "#{book.title}: ", book_path(book.id), class: 'navlink' %><p><%= book.average_rating %> out of 5</p>
     <% end %>
   </div>
   <div id="user-reviews">
     <p>Top Reviewers:</p>
     <% @user_reviews.each do |user| %>
-      <p><%= user.name %>: <%= user.count_reviews %></p>
-      <% end %>
+    <%= link_to "#{user.name}: ", user_path(user.id), class: 'navlink'%><p><%= user.count_reviews %></p>
+    <% end %>
   </div>
-</aside>
+</section>
+<% @books.each do |book|%>
+  <div class="info-display" id="book-<%=book.id%>">
+    <div class="book-image">
+      <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
+    </div>
+    <div class="book-info">
+      <%= link_to "#{book.title}", book_path(book.id), class: 'navlink', id: 'book-title'%>
+      <% book.authors.each do |author| %>
+      <p>Author(s): </p><%= link_to author.name, author_path(author.id), class: 'navlink', id:'book-author' %>
+      <% end %>
+      <p>Average Rating: <%= book.average_rating %></p>
+      <p>Total Reviews: <%= book.total_reviews %></p>
+      <p>Page Count: <%= book.pages %></p>
+      <p>Publication Date: <%= book.year_published %></p>
+    </div>
+  </div>
+<% end %>
