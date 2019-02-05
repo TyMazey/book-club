@@ -2,19 +2,19 @@
 
 <%= form_for @book do |f| %>
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title, placeholder: 'Title' %>
 
 <%= f.label :pages %>
-<%= f.number_field :pages %>
+<%= f.number_field :pages, placeholder: 'Page Count' %>
 
 <%= f.label :year_published %>
-<%= f.number_field :year_published %>
+<%= f.number_field :year_published, placeholder: 'Year' %>
 
 <%= f.label :thumbnail %>
-<%= f.text_field :thumbnail %>
+<%= f.text_field :thumbnail, placeholder: 'URL' %>
 
 <%= f.label :authors %>
-<%= f.text_field :authors %>
+<%= f.text_field :authors, placeholder: "Split Authors With Comma" %>
 
 <%= f.submit :Save %>
 <% end  %>
