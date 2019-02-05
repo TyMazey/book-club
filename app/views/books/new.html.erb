@@ -11,10 +11,10 @@
 <%= f.number_field :year_published, placeholder: 'Year' %>
 
 <%= f.label :thumbnail %>
-<%= f.text_field :thumbnail, placeholder: 'URL' %>
+<%= f.text_field :thumbnail, value: '', placeholder: 'Optional URL' %>
 
 <%= f.label :authors %>
-<%= f.text_field :authors, placeholder: "Split Authors With Comma" %>
+<%= f.text_field :authors, value: '', placeholder: "Split Authors With Comma" %>
 
 <%= f.submit :Save %>
 <% end  %>

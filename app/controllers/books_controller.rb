@@ -21,6 +21,9 @@ class BooksController < ApplicationController
     names = params[:book][:authors].split(',')
     authors = names.map {|name| Author.find_or_create_by(name: name.titlecase)}
     @book = Book.new(book_params)
+    if @book.thumbnail == ''
+      @book.update(thumbnail: 'https://www.mobileread.com/forums/attachment.php?attachmentid=111264&d=1378642555')
+    end
     @book.update(authors: authors)
     @book.update(title: @book.title.titlecase)
     @book.save
