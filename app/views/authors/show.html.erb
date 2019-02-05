@@ -16,16 +16,22 @@
     <p>Page Count: <%= book.pages %></p>
     <p>Publication Date: <%= book.year_published %></p>
   </div>
-  <% if book.reviews != nil %>
-  <% review = book.top_reviews(1)[0] %>
-    <div class="review-info" id="best-review-#{book.id}">
+    <% review = book.top_reviews(1)[0] %>
+    <% if review == nil %>
+    <div class="review-info" id="best-review">
+        <h4 id="review-title">No Reviews Yet</h4>
+        <p>Would you like to be the first?</p>
+        <%= link_to 'Click Here', new_book_review_path(book.id), class: 'navlink' %>
+    </div>
+    <% else %>
+    <div class="review-info" id="best-review-<%= book.id %>">
         <h4 id="review-title">Top Review</h4>
         <p>By: <%= review.user.name %></p>
         <p><%= review.title %></p>
         <p><%= review.rating %> out of 5</p>
         <p><%= review.description %></p>
     </div>
-  <% end %>
+    <% end %>
 </section>
 <% end %>
 </section>

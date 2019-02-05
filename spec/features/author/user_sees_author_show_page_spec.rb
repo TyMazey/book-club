@@ -47,10 +47,10 @@ RSpec.describe 'as visitor', type: :feature do
     book_2 = author.books.create(title: "book 2", pages: 100, year_published: 1901, thumbnail: "picture url")
     user_1 = User.create(name: 'Bob')
     user_2 = User.create(name: 'Jeef')
-    book.reviews.create(title: 'Great', description: 'great', rating: 5, user: user)
-    book_2.reviews.create(title: 'also great', description: 'great', rating: 5, user: user)
-    book.reviews.create(title: 'Bad', description: 'bad', rating: 1, user: user_1)
-    book_2.reviews.create(title: 'also bad', description: 'bad', rating: 1, user: user_1)
+    book.reviews.create(title: 'Great', description: 'great', rating: 5, user: user_1)
+    book_2.reviews.create(title: 'also great', description: 'great', rating: 5, user: user_1)
+    book.reviews.create(title: 'Bad', description: 'bad', rating: 1, user: user_2)
+    book_2.reviews.create(title: 'also bad', description: 'bad', rating: 1, user: user_2)
 
     visit author_path(author.id)
 
@@ -74,7 +74,7 @@ RSpec.describe 'as visitor', type: :feature do
 
     visit author_path(author.id)
 
-    within "#best-review-#{book.id}" do
+    within "#best-review" do
       expect(page).to have_content('No Reviews Yet')
     end
   end

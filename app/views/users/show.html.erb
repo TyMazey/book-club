@@ -16,6 +16,7 @@
     <p><%= review.description %></p>
     <p>Created: <%= review.created_at %></p>
   </div>
+  <%= button_to 'Delete Review', method: :delete, review: :id %>
 </section>
 <% end %>
 </section>
