@@ -33,6 +33,19 @@ RSpec.describe Review, type: :model do
   end
 
   describe 'instance methods' do
+    describe '.delete_review' do
+      it 'deletes a user review when the button is pressed' do
+        author = Author.create(name: "Rickey Bobby")
+        book_1 = Book.create(title: "Moby Dick", pages: 100, year_published: 1900, thumbnail: "gibberish", authors: [author])
+        user_1 = User.create(name: "bob")
+        review_1 = book_1.reviews.create(title: "Amazing", description: "Really", rating: 5, user: user_1)
+        review_2 = book_1.reviews.create(title: "Meh", description: "it's not great", rating: 2, user: user_1)
+
+        review_2.delete_review(review_2.id)
+
+        expect(Review.all).to_not include(review_2)
+      end
+    end
   end
 
 end

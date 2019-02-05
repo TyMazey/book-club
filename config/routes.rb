@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :reviews, shallow: true
   end
   resources :books
-  resources :authors, only: [:show]
+  resources :authors, only: [:show, :destroy]
   resources :users, only: [:show]
 end

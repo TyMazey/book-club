@@ -8,12 +8,13 @@
   <div class="book-image" id="author-book-img">
     <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
   </div>
-  <div class="book-info">
+  <div class="book-info" id="book-<%= review.book.id%>">
     <p id='review-title'><%= review.title %></p>
     <p><%= review.rating %> out of 5</p>
     <p><%= review.description %></p>
     <%= link_to "#{review.book.title}: ", book_path(review.book.id), class: 'navlink' %>
     <p>Created: <%= review.created_at %></p>
+    <%= button_to "Delete Review", review_path(review), method: :delete, params: {user: @user.id} %>
   </div>
 </section>
 <% end %>
