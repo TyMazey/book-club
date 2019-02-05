@@ -2,10 +2,22 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Book Club</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/main.css">
   </head>
-  <body>
+  <body class='landing-page'>
+    <section id='welcome'>
     <h1>WELCOME TO BOOK CLUB!</h1>
-    <%= link_to 'View the Shelf', books_path %>
+    <%= link_to 'View the Shelf', books_path, class: 'navlink' %>
+    </section>
+    <footer class='footer'>
+      This was a project completed at the Turing School of Software & Design.<br>
+      By: Ty Mazey & Vincent Provenzano <br>
+      Click 'View the Shelf' to visit the whole site where you can add new books, make reviews, <br>
+      or visit your user page by clicking on the names to navigate, or click shelf again to see <br>
+      all the books, or 'Home' to come back here. <br>
+      <%= link_to 'Github: https://github.com/TyMazey/book-club', 'https://github.com/TyMazey/book-club', class: 'navlink', id: 'git' %>
+    </footer>
   </body>
 </html>

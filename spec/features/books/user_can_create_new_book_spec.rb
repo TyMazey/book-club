@@ -50,4 +50,20 @@ RSpec.describe 'as a visitor', type: :feature do
     Author.where(name: 'Rickey Bobby')
     Author.where(name: 'Joe Shmoe')
   end
+
+  it 'gives a default image for the cover if none is given' do
+    visit new_book_path
+
+    fill_in 'Title', with: 'Talledega Knights'
+    fill_in 'Pages', with: '500'
+    fill_in 'Year published', with: '2002'
+    fill_in 'Authors', with: 'Rickey Bobby, Joe Shmoe'
+    click_button 'Save'
+
+    expect(page).to have_xpath("//img[@src='https://www.mobileread.com/forums/attachment.php?attachmentid=111264&d=1378642555']")
+    expect(page).to have_content('Rickey Bobby')
+    expect(page).to have_content('Joe Shmoe')
+    Author.where(name: 'Rickey Bobby')
+    Author.where(name: 'Joe Shmoe')
+  end
 end
