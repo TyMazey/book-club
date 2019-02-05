@@ -63,6 +63,7 @@ body {
 
 #book-title {
   font-size: 32px;
+  color: #f6f6f1;
 }
 
 #book-title:hover {
@@ -78,4 +79,13 @@ body {
   background-color: #a1a18c;
   justify-content: space-between;
   padding: 20px;
+}
+
+#review-title {
+  color: #f6f6f1;
+  font-size: 24px;
+}
+
+#author-book-img img{
+  max-height: 250px;
 }

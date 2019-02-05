@@ -1,18 +1,19 @@
-<section class= "user"
-<h1><%= @user.name %></h1>
-
+<section class= "navbar" id="sort-bar">
+  <h1><%= @user.name %></h1>
+    <%= link_to 'Newest Reviews', user_path(user: @user.id, sort: 'newest'), class: 'navlink' %>
+    <%= link_to 'Oldest Reviews', user_path(user: @user.id, sort: 'oldest'), class: 'navlink' %>
 </section>
-<section class="reviews">
-<%= link_to 'Newest Reviews', user_path(user: @user.id, sort: 'newest') %>
-<%= link_to 'Oldest Reviews', user_path(user: @user.id, sort: 'oldest') %>
 <%= @reviews.each do |review| %>
-<section id="single-review">
-  <p><%= review.title %></p>
-  <p><%= review.rating %></p>
-  <p><%= review.description %></p>
-  <p> <a href="/books/<%= review.book.id %>"><%= review.book.title%></a></p>
-  <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
-  <p><%= review.created_at %></p>
+<section class="info-display">
+  <div class="book-image" id="author-book-img">
+    <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
+  </div>
+  <div class="book-info">
+    <p id='review-title'><%= review.title %></p>
+    <p><%= review.rating %> out of 5</p>
+    <p><%= review.description %></p>
+    <%= link_to "#{review.book.title}: ", book_path(review.book.id), class: 'navlink' %>
+    <p>Created: <%= review.created_at %></p>
+  </div>
 </section>
 <% end %>
-</section>
