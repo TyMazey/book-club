@@ -89,3 +89,31 @@ body {
 #author-book-img img{
   max-height: 250px;
 }
+
+#author-book-info {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+}
+
+#top-reviews {
+  overflow-x: scroll;
+  max-height: 200px;
+}
+
+#bottom-reviews {
+  overflow-x: scroll;
+  max-height: 200px;
+}
+
+#user-reviews {
+  overflow: scroll;
+  max-height: 200px;
+}
+
+.review-scroll {
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-top-color: #666656;
+  border-bottom-color: #666656;
+}

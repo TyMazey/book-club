@@ -19,8 +19,8 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def top_reviews
-    reviews.order(rating: :desc, title: :desc).limit(3)
+  def top_reviews(amount)
+    reviews.order(rating: :desc, title: :desc).limit(amount)
   end
 
   def bottom_reviews

@@ -1,21 +1,25 @@
-<section class="navbar" id="stat-bar">
-  <div id="statistics">
+<section class="navbar" id="author-book-info">
+  <div id="overall">
   <h1>Overall Rating: <%= @book.average_rating %></h1>
-</div>
-  <div id="statistics">
+  </div>
+  <div id="top-reviews">
     <h3 id='review-title'>Top Reviews:</h3>
-    <% @book.top_reviews.each do |review| %>
+    <% @book.top_reviews(3).each do |review| %>
+    <div class="review-scroll">
     <p>Title: <%= review.title %></p>
     <p>Rating: <%= review.rating %></p>
-    <p><%= review.user.name %></p>
+    <p>By: <%= review.user.name %></p>
+    </div>
     <% end %>
   </div>
-  <div id="statistics">
+  <div id="bottom-reviews">
     <h3 id='review-title'>Bottom Reviews: </h3>
+    <div class="review-scroll">
     <% @book.bottom_reviews.each do |review| %>
     <p>Title: <%= review.title %></p>
     <p><%= review.rating %></p>
-    <p><%= review.user.name %></p>
+    <p>By: <%= review.user.name %></p>
+  </div>
     <% end %>
   </div>
 </section>

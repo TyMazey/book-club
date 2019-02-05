@@ -8,12 +8,12 @@
 <section class="info-display" id="single-review">
   <div class="book-image" id="author-book-img">
     <img src="<%= review.book.thumbnail %>" alt="<%= review.book.title %>-cover">
+    <%= link_to "#{review.book.title}", book_path(review.book.id), class: 'navlink' %>
   </div>
   <div class="book-info">
     <p id='review-title'><%= review.title %></p>
     <p><%= review.rating %> out of 5</p>
     <p><%= review.description %></p>
-    <%= link_to "#{review.book.title}: ", book_path(review.book.id), class: 'navlink' %>
     <p>Created: <%= review.created_at %></p>
   </div>
 </section>
