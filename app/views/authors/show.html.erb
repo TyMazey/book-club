@@ -8,13 +8,14 @@
   <div class='book-image' id='author-book-img'>
     <img src="<%= book.thumbnail %>" alt="<%= book.title %>-cover">
   </div>
-  <div class="book-info">
+  <div class="book-info book-<%= book.id %>">
     <%= link_to "#{book.title}", book_path(book.id), class: 'navlink', id: 'book-title'%>
     <% book.remove_author(@author).each do |author| %>
       <p>Author(s): </p><%= link_to author.name, author_path(author.id), class: 'navlink', id:'book-author' %>
     <% end %>
     <p>Page Count: <%= book.pages %></p>
     <p>Publication Date: <%= book.year_published %></p>
+    <%= button_to "Delete Author", author_path(@author), method: :delete%>
   </div>
     <% review = book.top_reviews(1)[0] %>
     <% if review == nil %>

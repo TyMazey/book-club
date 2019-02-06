@@ -100,6 +100,7 @@ RSpec.describe 'as visitor', type: :feature do
     expect(page).to have_content('book 2')
     expect(page).to have_content('andre')
     expect(page).to_not have_content('book 3')
+    expect(page).to_not have_content('bob')
 
   end
 end
