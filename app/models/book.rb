@@ -3,9 +3,7 @@ class Book < ApplicationRecord
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books, dependent: :destroy
 
-  validates_presence_of :title
-  validates_presence_of :pages
-  validates_presence_of :year_published
+  validates_presence_of :title, :pages, :year_published
 
   def remove_author(author)
     authors.where.not(id: author.id)

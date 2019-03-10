@@ -1,7 +1,7 @@
 <section class="review_form">
 
 <h1>New Review</h1>
-<%= form_for @review, url: book_reviews_path(@book) do |f|%>
+<%= form_for [@book, @review] do |f|%>
   <div class="form" id="title">
     <%= f.label :title %>
     <%= f.text_field :title %>

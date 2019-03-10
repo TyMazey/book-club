@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
 
   def new
-    book = Book.find(params[:book_id])
-    @review = book.reviews.new
-    @book = params[:book_id]
+    #book = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
+    @review = @book.reviews.new
+    #@book = params[:book_id]
   end
 
   def create
